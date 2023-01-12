@@ -150,6 +150,8 @@
 			background-color: transparent;
 			border-radius: 5px;
 			cursor: pointer;
+			padding-right: 0;
+			padding-left: 0;
 		}
 
 		.menu-toggle button:hover {
