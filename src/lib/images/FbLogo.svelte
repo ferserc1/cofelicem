@@ -1,0 +1,18 @@
+<script>
+    export let fill = 'black';
+
+    let styleRule = `fill: ${fill};`;
+</script>
+
+<svg width="100%" height="100%" viewBox="0 0 215 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" >
+    <g transform="matrix(1,0,0,1,-1414.94,-4.48002)">
+        <g transform="matrix(1,0,0,1,822.456,-305.259)">
+            <rect id="facebook" x="592.485" y="309.739" width="214.128" height="214.128" style="fill:none;"/>
+            <g id="facebook1" serif:id="facebook">
+                <g id="Facebook-Icon" serif:id="Facebook Icon" transform="matrix(5.89322,0,0,5.89322,-1734.39,-22142.4)">
+                    <path style={styleRule} d="M410.156,3840L410.156,3829.02L406.006,3829.02L406.006,3824.82L410.157,3824.82L410.157,3821.65C410.157,3818 412.627,3815.99 416.282,3815.99C418.032,3815.99 419.568,3816.1 420.007,3816.15L420.007,3820.02L417.412,3820.02C415.424,3820.02 415.052,3820.86 415.052,3822.1L415.052,3824.82L419.809,3824.82L419.191,3829.02L415.052,3829.02L415.052,3840L410.156,3840Z" />
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
