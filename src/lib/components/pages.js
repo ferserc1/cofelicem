@@ -1,7 +1,7 @@
 
 import fs from 'fs';
 
-const dataPath = 'data';
+const dataPath = 'static';
 const pagesPath = `${dataPath}/pages.json`;
 
 async function assertDataDirCreated() {
@@ -28,6 +28,9 @@ export async function getPages() {
 
 export async function addPage({ title, path, content = "" }) {
     await assertDataDirCreated();
+    if  (path[0] !== '/') {
+        path = `/${path}`;
+    }
     const pageData = await getPages();
     pageData.push({ title, path, content });
     await fs.promises.writeFile(pagesPath, JSON.stringify(pageData), { encoding: 'utf-8' });
