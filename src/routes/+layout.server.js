@@ -1,27 +1,8 @@
+import { getPages } from "$lib/components/pages";
 
-export function load() {
+export async function load() {
+    const pages = await getPages();
     return {
-        pages: [
-            {
-                title: "Inicio",
-                path: "/"
-            },
-            {
-                title: "Voluntariado",
-                path: "/voluntariado"
-            },
-            {
-                title: "Adopta",
-                path: "/adopta"
-            },
-            {
-                title: "Colabora",
-                path: "/colabora"
-            },
-            {
-                title: "Censo",
-                path: "/censo"
-            }
-        ]
+        pages
     }
 }
