@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Pirata",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Nina",
+        "description": "Pelirroja y ojos verdes",
+        "colony": "Civil"
+    },
+    {
+        "name": "Pity",
+        "name2": "Carusseta",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Mocoset",
+        "name2": "Barítono",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Patas largas",
+        "name2": "Llum",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Amore",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Mani",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Pelusa",
+        "description": "",
+        "colony": "Civil"
+    },
+    {
+        "name": "Samy",
+        "description": "",
+        "colony": ""
+    },
+    {
+        "name": "Van Gogh",
+        "description": "",
+        "colony": ""
+    },
+    {
+        "name": "Bipo",
+        "description": "",
+        "colony": ""
+    },
+    {
+        "name": "Pepe",
+        "description": "",
+        "colony": ""
+    },
+    {
+        "name": "Bolita",
+        "description": "",
+        "colony": "Columnas"
+    },
+    {
+        "name": "Tripode",
+        "description": "Blanco y negro, le falta la pata trasera izquierda",
+        "colony": "Columnas"
+    },
+    {
+        "name": "Desteñido",
+        "name2": "Chocolate",
+        "name3": "Choco",
+        "description": "",
+        "colony": "Columnas"
+    }
+]

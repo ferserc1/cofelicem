@@ -1,14 +1,9 @@
 
 import fs from 'fs';
+import { assertDirCreated } from './utils';
 
 const dataPath = 'static';
 const pagesPath = `${dataPath}/pages.json`;
-
-async function assertDataDirCreated() {
-    if (!fs.existsSync(dataPath)) {
-        await fs.promises.mkdir(dataPath);
-    }
-}
 
 export async function getPages() {
     try {
@@ -27,7 +22,7 @@ export async function getPages() {
 }
 
 export async function addPage({ title, path, content = "" }) {
-    await assertDataDirCreated();
+    await assertDirCreated(dataPath);
     if  (path[0] !== '/') {
         path = `/${path}`;
     }
