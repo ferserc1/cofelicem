@@ -12,10 +12,12 @@ export const actions = {
     create: async ({cookies, request}) => {
         const data = await request.formData();
         const name = data.get('name');
+        const name2 = data.get('name2');
+        const name3 = data.get('name3');
         const colony = data.get('colony');
+        const imageName = data.get('imageName');
         const description = data.get('description');
-        // TODO: image
-        await addCat({ name, colony, description });
+        await addCat({ name, name2, name3, imageName, colony, description });
     },
 
     remove: async ({ cookies, request }) => {
