@@ -3,7 +3,7 @@ import fs from 'fs';
 import { assertDirCreated } from './utils';
 
 const dataPath = 'static';
-const photoDir = `${dataPath}/images`;
+export const photoDir = `${dataPath}/images`;
 const colonyPath = `${dataPath}/colony.json`;
 
 const assertDirs = async () => {
