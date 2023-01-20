@@ -1,0 +1,48 @@
+
+import jwt from 'jsonwebtoken';
+
+const defaultSecret = "BA34490FE223EEDC1073";
+const secret = defaultSecret; // TODO: get secret from configuration file
+
+const encodeToken = (dataObject) => {
+    const token = jwt.sign(dataObject, secret);
+    return token;
+}
+
+const decodeToken = (token) => {
+    try {
+        const dataObject = jwt.verify(token, secret);
+        return dataObject;
+    }
+    catch (err) {
+        throw { code: 401, message: "Error procesing user token" }
+    }
+}
+
+const userData = [
+    {
+        login: "info@cofelicem.org",
+        pass: "vangoghRubito"
+    }
+]
+export const checkLogin = async (user, pass) => {
+    const result = userData.find(userData => {
+        return userData.login === user && userData.pass === pass
+    });
+    return result;
+}
+
+export const getToken = async (user,pass) => {
+    const loginValid = await checkLogin(user,pass);
+    if (loginValid) {
+        return encodeToken({ user, pass });
+    }
+    else {
+        return null;
+    }
+}
+ 
+export const checkToken = async (token) => {
+    // Throw error if invalid token
+    // Returns the user data if the token is valid
+}

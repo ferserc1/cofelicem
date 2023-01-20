@@ -1,24 +1,16 @@
 <script>
-    import catAvatar from "$lib/images/cat_avatar.svg";
+    import ImagePicker from "$lib/components/ImagePicker.svelte";
 
     export let data;
 
-    let fileInput;
-    let files;
-    let avatar;
     let imageName = "";
     let uploading = false;
 
-    function getBase64(image) {
+    const onImagePicked = async imageData => {
         uploading = true;
-        const reader = new FileReader();
-        imageName = image.name;
-        reader.readAsDataURL(image);
-        reader.onload = async e => {
-            avatar = e.target.result;
-            await uploadImage(e.target.result);
-            uploading = false;
-        }
+        imageName = imageData.name;
+        await uploadImage(imageData.image);
+        uploading = false;
     }
 
     async function uploadImage(imgBase64) {
@@ -76,16 +68,10 @@
         <input type="text" name="name2" required>
         <input type="text" name="name3" required>
     </div>
-    <div class="form-field">
+    <div class="form-field image-picker">
         <label for="image">Foto:</label>
-        {#if avatar}
-            <img id="catPhoto" src={avatar} alt="cat avatar" />
-        {:else}
-            <img id="catPhoto" src={catAvatar} alt="cat avatar" />
-        {/if}
-        <input class="hidden" id="image" type="file" accept=".png,.jpg,.jpeg" bind:this={fileInput} bind:files on:change={() => getBase64(files[0])} />
         <input type="hidden" name="imageName" bind:value={imageName} />
-        <button type="button" class="upload-btn" on:click={() => fileInput.click() }>Seleccionar Imagen</button>
+        <ImagePicker imageProcessed={onImagePicked} acceptedTypes=".png,.jpg,.jpeg" buttonText="Seleccionar Imagen" maxImageWidth={600} />
     </div>
     <div class="form-field">
         <label for="colony">Colonia:</label>
@@ -113,12 +99,8 @@
         max-width: 200px;
     }
 
-    .hidden {
-        display: none;
-    }
-
-    .form-field img {
-        width: 500px;
+    .image-picker {
+        width: 250px;
     }
 
     .uploading {
