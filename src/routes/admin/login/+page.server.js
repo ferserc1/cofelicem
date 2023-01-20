@@ -3,8 +3,14 @@ import { fail, redirect } from '@sveltejs/kit';
 
 import { checkLogin, checkToken, getToken } from '$lib/components/auth';
 
-export const load = async () => {
-    return {}
+const mainAdminPage = '/admin/colony';
+
+export const load = async ({ locals }) => {
+    const { user } = locals;
+
+    if (user) {
+        throw redirect(302, mainAdminPage);
+    }
 }
 
 export const actions = {
@@ -20,7 +26,7 @@ export const actions = {
                 sameSite: 'strict',
                 maxAge: 60 * 60 * 24
             });
-            throw redirect(302, '/admin/colony');
+            throw redirect(302, mainAdminPage);
         }
         else {
             return fail(401, { message: "Invalid user or password" });

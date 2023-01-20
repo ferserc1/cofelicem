@@ -12,10 +12,11 @@ const encodeToken = (dataObject) => {
 const decodeToken = (token) => {
     try {
         const dataObject = jwt.verify(token, secret);
+        console.log(dataObject);
         return dataObject;
     }
     catch (err) {
-        throw { code: 401, message: "Error procesing user token" }
+        return null;
     }
 }
 
@@ -43,6 +44,6 @@ export const getToken = async (user,pass) => {
 }
  
 export const checkToken = async (token) => {
-    // Throw error if invalid token
-    // Returns the user data if the token is valid
+    const dataObject = decodeToken(token);
+    return dataObject;
 }
