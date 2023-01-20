@@ -32,7 +32,9 @@
 
 </script>
 
-<h1>Admin colony</h1>
+<h1>Censo</h1>
+
+<p><a href="/admin">Volver</a></p>
 
 <ul>
     {#each data.colony as cat}

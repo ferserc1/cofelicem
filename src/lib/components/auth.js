@@ -12,7 +12,6 @@ const encodeToken = (dataObject) => {
 const decodeToken = (token) => {
     try {
         const dataObject = jwt.verify(token, secret);
-        console.log(dataObject);
         return dataObject;
     }
     catch (err) {

@@ -10,7 +10,6 @@ export async function POST({ request }) {
     const imgData = data.image;
     const fileName = data.fileName;
     const filePath = path.join(photoDir, fileName);
-    console.log(filePath);
     await writeFile(filePath, imgData, 'base64');
     return json({ status: true });
 }

@@ -3,7 +3,7 @@ import { fail, redirect } from '@sveltejs/kit';
 
 import { checkLogin, checkToken, getToken } from '$lib/components/auth';
 
-const mainAdminPage = '/admin/colony';
+const mainAdminPage = '/admin';
 
 export const load = async ({ locals }) => {
     const { user } = locals;
@@ -22,7 +22,7 @@ export const actions = {
         if (token) {
             cookies.set('AuthorizationToken', `Bearer ${token}`, {
                 httpOnly: false,
-                path: '/',
+                //path: '/',
                 sameSite: 'strict',
                 maxAge: 60 * 60 * 24
             });

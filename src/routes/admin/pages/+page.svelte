@@ -4,7 +4,9 @@
     
 </script>
 
-<h1>Admin page</h1>
+<h1>Páginas</h1>
+
+<p><a href="/admin">Volver</a></p>
 
 <ul>
     {#each data.pages as page}
