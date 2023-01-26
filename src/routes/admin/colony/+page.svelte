@@ -2,7 +2,6 @@
     import ImagePicker from "$lib/components/ImagePicker.svelte";
     import { enhance } from "$app/forms";
     import { uploadImage } from "$lib/components/utils.js";
-    import Table from "$lib/components/Table.svelte";
     import TableHeader from "$lib/components/TableHeader.svelte";
     import TableRow from "$lib/components/TableRow.svelte";
     import TableCell from "$lib/components/TableCell.svelte";
