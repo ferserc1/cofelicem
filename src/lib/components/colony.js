@@ -26,7 +26,7 @@ export async function getColony() {
     }
 }
 
-export async function addCat({ name, photo, description, colony, name2 = "", name3 = "" }) {
+export async function addCat({ name, photo, description, colony, name2 = "", name3 = "", imageName = "" }) {
     await assertDirs();
     const colonyData = await getColony();
     colonyData.push({
@@ -35,7 +35,8 @@ export async function addCat({ name, photo, description, colony, name2 = "", nam
         name3,
         photo,
         description,
-        colony
+        colony,
+        imageName
     });
     saveColonyFile(colonyData)
 }

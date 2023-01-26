@@ -166,6 +166,7 @@
 			height: 70px;
 			margin-top: 25px;
 			align-items: center;
+			z-index: 1;
 		}
 		
 		.logo-container {

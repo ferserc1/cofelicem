@@ -17,6 +17,7 @@ export const actions = {
         const colony = data.get('colony');
         const imageName = data.get('imageName');
         const description = data.get('description');
+        console.log(imageName);
         await addCat({ name, name2, name3, imageName, colony, description });
     },
 

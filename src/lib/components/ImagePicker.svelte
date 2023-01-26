@@ -35,6 +35,11 @@
     let fileInput;
     let files;
 
+    export const clear = () => {
+        image = "";
+        files = [];
+    }
+
     function processImage(file) {
         if (typeof(imagePicked) === "function") {
             imagePicked({
@@ -75,6 +80,7 @@
             }
         }
     }
+
 </script>
 
 <div class="image-picker">

@@ -29,11 +29,12 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
+		padding: 74px 1rem;
 		width: 100%;
-		max-width: 64rem;
+		max-width: 85%;
 		margin: 0 auto;
 		box-sizing: border-box;
+		background-color: white;
 	}
 
 	footer {
@@ -51,6 +52,12 @@
 	@media (min-width: 480px) {
 		footer {
 			padding: 12px 0;
+		}
+	}
+
+	@media (max-width: 940px) {
+		main {
+			max-width: 100%;
 		}
 	}
 </style>

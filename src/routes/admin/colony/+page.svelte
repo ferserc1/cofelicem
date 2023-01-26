@@ -1,34 +1,29 @@
 <script>
     import ImagePicker from "$lib/components/ImagePicker.svelte";
+    import { enhance } from "$app/forms";
+    import { uploadImage } from "$lib/components/utils.js";
+    import Table from "$lib/components/Table.svelte";
+    import TableHeader from "$lib/components/TableHeader.svelte";
+    import TableRow from "$lib/components/TableRow.svelte";
+    import TableCell from "$lib/components/TableCell.svelte";
+
+    let imgPicker;
 
     export let data;
 
     let imageName = "";
     let uploading = false;
 
+    const getImagePath = (fileName) => fileName ? `/images/${fileName}` : "";
+
+    const headers = ["Foto", "Nombre", "Colonia", "Acciones"];
+
     const onImagePicked = async imageData => {
         uploading = true;
         imageName = imageData.name;
-        await uploadImage(imageData.image);
+        await uploadImage(imageName,imageData.image);
         uploading = false;
     }
-
-    async function uploadImage(imgBase64) {
-        const data = {};
-        const imgData = imgBase64.split(',');
-        data.image = imgData[1];
-        data.fileName = imageName;
-        await fetch(`/admin/colony/upload`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-    }
-
-    const getImagePath = (fileName) => `/images/${fileName}`;
 
 </script>
 
@@ -36,44 +31,56 @@
 
 <p><a href="/admin">Volver</a></p>
 
-<ul>
-    {#each data.colony as cat}
-        <form
-            method="POST"
-            action="?/remove">
-            <input type="hidden" name="name" value={cat.name}>
-            <button type="submit">X</button>
-            <li>
-                {cat.name}
-                {#if cat.name2}
-                / {cat.name2}
+<Table>
+    <TableHeader>
+        {#each headers as header, i}
+            <TableCell numColumns={headers.length} role="columnheader">{header}</TableCell>
+        {/each}
+    </TableHeader>
+    {#each data.colony as row}
+        <TableRow>
+            <TableCell numColumns={headers.length}>
+                {#if row.imageName}
+                    <img src={getImagePath(row.imageName)} alt={row.name}/>
                 {/if}
-                {#if cat.name3}
-                / {cat.name3}
-                {/if}
-                {#if cat.imageName }
-                    <div>
-                        <img src={getImagePath(cat.imageName)} alt={cat.name + "photo"} />
-                    </div>
-                {/if}
-            </li>
-        </form>
+            </TableCell>
+            <TableCell numColumns={headers.length}>{row.name}</TableCell>
+            <TableCell numColumns={headers.length}>{row.colony}</TableCell>
+            <TableCell numColumns={headers.length}>
+                <form method="POST" action="?/remove" use:enhance>
+                    <input type="hidden" name="name" value={row.name} />
+                    <button type="submit">Eliminar</button>
+                </form>
+                <button type="button" on:click={() => location.href = `/admin/colony/${row.name}`}>Editar</button>
+            </TableCell>
+        </TableRow>
     {/each}
-</ul>
+</Table>
 
 <form
     method="POST"
-    action="?/create">
+    action="?/create"
+    use:enhance={() => {
+        imgPicker.clear();
+    }}>
     <div class="form-field">
-        <label for="name">Nombre (y nombres alternativos):</label>
+        <label for="name">Nombre:</label>
         <input type="text" name="name" required>
-        <input type="text" name="name2" required>
-        <input type="text" name="name3" required>
     </div>
-    <div class="form-field image-picker">
+    <div class="form-field">
+        <label for="name">Nombre alternarivo 1:</label>
+        <input type="text" name="name2">
+    </div>
+    <div class="form-field">
+        <label for="name">Nombre alternativo 2:</label>
+        <input type="text" name="name3">
+    </div>
+    <div class="form-field">
         <label for="image">Foto:</label>
         <input type="hidden" name="imageName" bind:value={imageName} />
-        <ImagePicker imageProcessed={onImagePicked} acceptedTypes=".png,.jpg,.jpeg" buttonText="Seleccionar Imagen" maxImageWidth={600} />
+        <div class="image-picker">
+            <ImagePicker imageProcessed={onImagePicked} acceptedTypes=".png,.jpg,.jpeg" buttonText="Seleccionar Imagen" bind:this={imgPicker} maxImageWidth={600} />
+        </div>
     </div>
     <div class="form-field">
         <label for="colony">Colonia:</label>
@@ -83,7 +90,9 @@
         <label for="description">Descripción:</label>
         <textarea name="description"></textarea>
     </div>
-    <button type="submit">Añadir</button>
+    <div class="form-buttons">
+        <button type="submit">Añadir</button>
+    </div>
 </form>
 
 {#if uploading}
@@ -93,16 +102,14 @@
 {/if}
 
 <style>
-    label {
-        display: block;
-    }
 
     li img {
         max-width: 200px;
     }
 
     .image-picker {
-        width: 250px;
+        display: inline-block;
+        max-width: 50%;
     }
 
     .uploading {
