@@ -102,11 +102,6 @@
 {/if}
 
 <style>
-
-    li img {
-        max-width: 200px;
-    }
-
     .image-picker {
         display: inline-block;
         max-width: 50%;
