@@ -5,6 +5,7 @@
     import TableHeader from "$lib/components/TableHeader.svelte";
     import TableRow from "$lib/components/TableRow.svelte";
     import TableCell from "$lib/components/TableCell.svelte";
+    import Table from "$lib/components/Table.svelte";
 
     let imgPicker;
 
