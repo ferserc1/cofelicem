@@ -22,8 +22,9 @@ export const actions = {
         if (token) {
             cookies.set('AuthorizationToken', `Bearer ${token}`, {
                 httpOnly: false,
-                //path: '/',
+                path: '/',
                 sameSite: 'strict',
+                secure: false,
                 maxAge: 60 * 60 * 24
             });
             throw redirect(302, mainAdminPage);

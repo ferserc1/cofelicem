@@ -2,12 +2,13 @@
 import fs from 'fs';
 import { assertDirCreated } from './utils';
 
-const dataPath = 'static';
-export const photoDir = `${dataPath}/images`;
+const dataPath = 'data';
+export const photoDir = `static/images`;
 const colonyPath = `${dataPath}/colony.json`;
 
 const assertDirs = async () => {
     await assertDirCreated(photoDir);
+    await assertDirCreated(dataPath);
 }
 
 const saveColonyFile = async (colonyData) => {

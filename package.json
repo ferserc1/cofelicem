@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev_": "vite dev",
-		"dev": "NODE_OPTIONS=--inspect ./node_modules/.bin/vite dev",
+		"dev": "NODE_OPTIONS=--inspect ./node_modules/.bin/vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview --host"
 	},
